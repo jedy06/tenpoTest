@@ -15,7 +15,7 @@ public class PercentExternalTask {
     @Autowired
     private ExternalDataService externalDataService;
 
-    @Scheduled(fixedRate = 180000) // 300000 milisegundos = 5 minutos
+    @Scheduled(fixedRate = 1500000) // 1500000 milisegundos = 25 minutos
     public void executeTask(){
         int numeroAleatorio = ThreadLocalRandom.current().nextInt(1, 101);
         externalDataService.getPercent(numeroAleatorio);
