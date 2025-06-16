@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,10 +24,13 @@ public class CallHistoryEntity {
     @Column(name = "endpoint")
     private String endpoint;
 
-    @Column(name = "parametros")
-    private String parametros;
+    @Column(name = "codigo_retorno")
+    private int codigo;
 
-    @Column(name = "respuesta")
+    @Column(name = "parametro_id_externo")
+    private BigDecimal parametro;
+
+    @Column(name = "respuesta_externa")
     private String respuesta;
 
 }
