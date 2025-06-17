@@ -32,7 +32,7 @@ class ExternalDataServiceIntegrationTest {
     void testFindPercentBD_isCached() throws ClassNotFoundException {
         // Arrange
         CallHistoryEntity mockEntity = new CallHistoryEntity();
-        mockEntity.setRespuesta("{\"porcentaje\":10}");
+        mockEntity.setRespuesta("{\"porcentaje\":8,\"id\":\"88\"}}");
         when(callHistroyRepo.findFirstByCodigoOrderByFechaDesc(200))
                 .thenReturn(Optional.of(mockEntity));
 
