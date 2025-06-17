@@ -81,7 +81,7 @@ paginada.
  cd existing_repo
  git clone https://github.com/jedy06/tenpoTest.git
  cd tenpoTest
- git branch -M main
+ git checkout main
  docker compose up
 ```
 
