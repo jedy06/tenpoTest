@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: tenpo:v1.0
+    container_name: tenpo
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://tenpo_db:5432/tenpo
+      SPRING_DATASOURCE_USERNAME: tenpo
+      SPRING_DATASOURCE_PASSWORD: tenpo
+    depends_on:
+      - tenpo_db
+    networks:
+      - tenpo-network
+
+  tenpo_db:
+    image: postgres:16
+    container_name: tenpo_db
+    environment:
+      POSTGRES_DB: tenpo
+      POSTGRES_USER: tenpo
+      POSTGRES_PASSWORD: tenpo
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/init-db:/docker-entrypoint-initdb.d
+    networks:
+      - tenpo-network
+
+volumes:
+  pgdata:
+
+networks:
+  tenpo-network:
